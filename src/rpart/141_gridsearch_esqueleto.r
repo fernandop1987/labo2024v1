@@ -19,7 +19,7 @@ PARAM$semillas <- c(110251, 190283, 340211, 577463, 880249)
 # particionar( data=dataset, division=c(70,30), agrupa=clase_ternaria, seed=semilla)
 #   crea una particion 70, 30
 
-particionar <- function(data, division=c(70,30), agrupa = clase_ternaria, campo = "fold", start = 1, seed = semilla) {
+particionar <- function(data, division, agrupa = "", campo = "fold", start = 1, seed = NA) {
   if (!is.na(seed)) set.seed(seed)
 
   bloque <- unlist(mapply(function(x, y) {
@@ -132,7 +132,7 @@ for (vmax_depth in c(4, 6, 8, 10, 12, 14)) {
     tb_grid_search <- rbindlist( 
       list( tb_grid_search, 
             list( vmax_depth, vmin_split, ganancia_promedio) ) )
-   
+
   }
 
   # escribo la tabla a disco en cada vuelta del loop mas externo
