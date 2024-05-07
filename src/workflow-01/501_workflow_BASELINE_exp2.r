@@ -207,12 +207,12 @@ TS_strategy_guantesblancos_202107 <- function( pmyexp, pinputexps, pserver="loca
   
   
   param_local$future <- c(202107)
-  param_local$final_train <- c(202105, 202104, 202103)
+  param_local$final_train <- c(202102, 202101, 202012, 202011, 202010, 202009, 202008, 202007, 202005)
   
   
-  param_local$train$training <- c(202103, 202102, 202101, 202012, 202011, 202010, 202009, 202008, 202007)
-  param_local$train$validation <- c(202104)
-  param_local$train$testing <- c(202105)
+  param_local$train$training <- c(202102, 202101, 202012, 202011, 202010, 202009, 202008, 202007, 202005)
+  param_local$train$validation <- c(202103)
+  param_local$train$testing <- c(202104, 202105)
   
   # Atencion  0.1  de  undersampling de la clase mayoritaria,  los CONTINUA
   # 1.0 significa NO undersampling ,  0.1  es quedarse con el 10% de los CONTINUA
@@ -318,18 +318,18 @@ corrida_guantesblancos_202109 <- function( pnombrewf, pvirgen=FALSE )
 {
   if( -1 == exp_wf_init( pnombrewf, pvirgen) ) return(0) # linea fija
   
-  DT_incorporar_dataset_default( "DTa0001", "competencia_2024.csv.gz")
-  CA_catastrophe_default( "CAa0001", "DTa0001" )
+  DT_incorporar_dataset_default( "DTb0001", "competencia_2024.csv.gz")
+  CA_catastrophe_default( "CAb0001", "DTb0001" )
   
-  DR_drifting_guantesblancos( "DRa0001", "CAa0001" )
-  FE_historia_guantesblancos( "FEa0001", "DRa0001" )
+  DR_drifting_guantesblancos( "DRb0001", "CAb0001" )
+  FE_historia_guantesblancos( "FEb0001", "DRb0001" )
   
-  TS_strategy_guantesblancos_202109( "TSa0001", "FEa0001" )
+  ###TS_strategy_guantesblancos_202109( "TSa0001", "FEa0001" )
   
-  HT_tuning_guantesblancos( "HTa0001", "TSa0001" )
+  ###HT_tuning_guantesblancos( "HTa0001", "TSa0001" )
   
   # El ZZ depente de HT y TS
-  ZZ_final_guantesblancos( "ZZa0001", c("HTa0001","TSa0001") )
+  ###ZZ_final_guantesblancos( "ZZa0001", c("HTa0001","TSa0001") )
   
   
   exp_wf_end( pnombrewf, pvirgen ) # linea fija
@@ -346,12 +346,12 @@ corrida_guantesblancos_202107 <- function( pnombrewf, pvirgen=FALSE )
   if( -1 == exp_wf_init( pnombrewf, pvirgen) ) return(0) # linea fija
   
   # Ya tengo corrido FE0001 y parto de alli
-  TS_strategy_guantesblancos_202107( "TSa0002", "FEa0001" )
+  TS_strategy_guantesblancos_202107( "TSb0002", "FEb0001" )
   
-  HT_tuning_guantesblancos( "HTa0002", "TSa0002" )
+  HT_tuning_guantesblancos( "HTb0002", "TSb0002" )
   
   # El ZZ depente de HT y TS
-  ZZ_final_guantesblancos( "ZZa0002", c("HTa0002", "TSa0002") )
+  ZZ_final_guantesblancos( "ZZb0002", c("HTb0002", "TSb0002") )
   
   
   exp_wf_end( pnombrewf, pvirgen ) # linea fija
