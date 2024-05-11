@@ -79,14 +79,14 @@ print(resultado)
 
 #Vectores
 baseline <- c(59916000, 59301000, 59001000, 60108000, 59538000)
-exp1_err <- c(61248000, 62235000, 60960000, 61188000, 61452000)
-exp2_err <- c(60573000, 60606000, 60708000, 60375000, 60648000)
 exp2 <- c(60915000, 62208000, 61722000, 61395000, 60036000)
-
-
+exp3 <- c(60180000, 59835000, 60234000, 60141000, 60390000)
+exp4 <- c(59274000, 60519000, 59985000, 60714000, 60426000)
+exp5 <- c(60984000, 60375000, 59703000, 59001000, 60171000)
+exp6 <- c(60315000, 60081000, 60882000, 60708000, 60771000)
 
 # Realizar el test de Wilcoxon
-resultado <- wilcox.test(exp1_err, exp2, alternative = "two.sided")
+resultado <- wilcox.test(exp5, exp6, alternative = "two.sided")
 
 # Mostrar el resultado
 print(resultado)
